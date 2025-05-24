@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MenuConfig V6</title>
+
+  <style>
+    body {
+      font-family: 'Courier', monospace;
+      color: red;
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .chalk {
+      font-family: 'Courier', monospace;
+      font-weight: bold;
+      color: #66b3b3;
+    }
+
+    .hidden { display: none; }
+
+    .login-box, .menu-box {
+      max-width: 500px;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: rgba(0, 0, 0, 0.6);
+      background-blend-mode: darken;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    button {
+      background: #142;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .gradient {
+      background: linear-gradient(to right, red, orange);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .highlight-box, .checkbox-group, .switch, .slider-group, .game-version, #notify {
+      border: 2px solid #66b3b3;
+      background-color: rgba(102, 179, 179, 0.2);
+      box-shadow: 0 0 10px #66b3b3;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .highlight-box {
+      font-size: 25px;
+      font-weight: bold;
+      background-color: rgba(102, 179, 179, 0.3);
+    }
+
+    .sub-highlight {
+      border: 2px solid #66b3b3;
+      background-color: rgba(102, 179, 179, 0.1);
+      padding: 8px 15px;
+      margin: 10px auto;
+      display: inline-block;
+      border-radius: 6px;
+      color: #BFE940; 
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .checkbox-group label, .game-version label {
+      display: inline-block;
+      margin: 5px 10px;
+      font-weight: bold;
+    }
+
+    .slider-group {
+      margin: 10px 0;
+    }
+
+    .slider {
+      width: 80%;
+    }
+
+    .slider-value {
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .switch {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 10px;
+    }
+
+    .note {
+      font-size: 14px;
+      color: orange;
+      margin-top: 10px;
+    }
+
+    #notify {
+      margin-top: 20px;
+      font-weight: bold;
+      white-space: pre-line;
+      
+    }
+
+    
+    .glowing-green-yellow {
+      color: #8bc34a; 
+      white-space: pre-line;
+    }
+
+    
+    .time-highlight {
+      color: #3498db;
+      font-weight: bold;
+      text-shadow: 0 0 4px #6ec1ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box" id="loginBox">
+    <img src="https://files.catbox.moe/g6vty1.png" alt="avatar" width="150" />
+    <div class="title chalk">Cường Ka 💤</div>
+    <div class="title chalk">MenuConfig V6 IOS        
+
+phiên bản 6.0 @ngtuancuongios</div>
+    <input type="text" id="username" placeholder="Enter Username..." class="chalk" />
+    <input type="password" id="password" placeholder="Enter Password..." class="chalk" />
+    <button onclick="login()" class="chalk">Open Menu</button>
+  </div>
+
+  <div class="menu-box hidden" id="menuBox">
+    <div class="highlight-box">MENU CHỨC NĂNG V6</div>
+
+    <div class="sub-highlight chalk">CẬP NHẬT FREE FIRE OB49</div>
+
+    <div class="sub-highlight chalk">Thông tin Login Account (chọn 1)</div>
+    <div class="checkbox-group">
+      <label class="chalk"><input type="checkbox" id="fb" /> Facebook</label>
+      <label class="chalk"><input type="checkbox" id="gg" /> Google</label>
+      <label class="chalk"><input type="checkbox" id="guest" /> Khách</label>
+    </div>
+
+    <div class="chalk" style="font-weight: bold;">@ngtuancuongios</div>
+
+    <div class="sub-highlight chalk">FUNCITION 1</div>
+
+    <div class="slider-group">
+      <label class="chalk">Sensitivity</label><br />
+      <input
+        type="range"
+        class="slider"
+        id="sensitivitySlider"
+        min="0"
+        max="200"
+        value="0"
+        oninput="updateValue('sensitivity')"
+      />
+      <span class="slider-value chalk" id="sensitivityValue">0%</span>
+    </div>
+
+    <div class="slider-group">
+      <label class="chalk">PointerTouch</label><br />
+      <input
+        type="range"
+        class="slider"
+        id="pointerSlider"
+        min="0"
+        max="200"
+        value="0"
+        oninput="updateValue('pointer')"
+      />
+      <span class="slider-value chalk" id="pointerValue">100%</span>
+    </div>
+      
+
+    <img src="https://files.catbox.moe/g6vty1.png" width="100" />
+
+    <div class="sub-highlight chalk">Phiên bản Game :</div>
+    <div class="switch game-version">
+      <label class="chalk"><input type="checkbox" id="ff" /> Free Fire</label>
+      <label class="chalk"><input type="checkbox" id="ffmax" /> Free Fire Max</label>
+    </div>
+
+    <div class="note chalk">*sau khi bật rồi hãy khởi động lại máy rồi ngâm nhé !</div>
+
+    <button onclick="activateFunction()" class="chalk">Bật TRỢ NĂNG V6</button>
+
+    <div id="notify"></div>
+  </div>
+
+  <script>
+    const loginBackgroundURL = "https://files.catbox.moe/zlm1fh.mp4";
+    const menuBackgroundURL = "https://files.catbox.moe/zlm1fh.mp4";
+
+    document.getElementById("loginBox").style.backgroundImage = `url('${loginBackgroundURL}')`;
+    document.getElementById("menuBox").style.backgroundImage = `url('${menuBackgroundURL}')`;
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "ntc" && pass === "v6") {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("menuBox").classList.remove("hidden");
+      } else {
+        alert("Login Fail ❌");
+      }
+    }
+
+    function updateValue(type) {
+      const val =
+        document.getElementById(
+          type === "sensitivity" ? "sensitivitySlider" : "pointerSlider"
+        ).value;
+      document.getElementById(
+        type === "sensitivity" ? "sensitivityValue" : "pointerValue"
+      ).textContent = val + "%";
+    }
+
+    function activateFunction() {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString("vi-VN");
+      const dateStr = now.toLocaleDateString("vi-VN");
+      const fullTime = `${dateStr} - ${timeStr}`;
+      const notifyBox = document.getElementById("notify");
+
+      notifyBox.classList.add("glowing-green-yellow"); // Thêm class đổi màu xanh lá pha vàng
+      notifyBox.innerHTML = `Chế độ trợ năng đã được kích hoạt cho cập nhật OB49:
+
+[Graphics]
+Resolution=1280x720
+GraphicsQuality=Smooth
+FPS=90
+Shadow=False
+AntiAliasing=False
+RenderingQuality=Low
+Vulkan=True
+
+[TouchOptimization]
+DPI=900
+SensitivityBoost=True
+PointerAcceleration=Off
+TouchLatency=Minimized
+
+[Performance]
+ThermalThrottle=Bypass
+RAMCleaner=Enabled
+CPUBoost=True
+GPUForceRender=True
+
+✅ XỬ LÍ DỮ LIỆU MÁY THÀNH CÔNG...✅
+
+🛠 Thời gian kích hoạt: <span class="time-highlight">${fullTime}</span>`;
+    }
+  </script>
+</body>
+</html>
